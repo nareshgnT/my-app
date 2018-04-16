@@ -17,7 +17,7 @@ $.ajax({
 });
 
 function getFile(fname){
-    $('#frame').attr('src', '/getIndex/'+fname);
+    $('#frame').attr('src', '/getIndex/'+fname+'/fetchFilesForDisplay');
     console.log(fname)
 }
 

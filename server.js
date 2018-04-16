@@ -2,7 +2,7 @@ var fs = require('fs');
 const express = require('express')
 var path = require('path')
 const app = express()
-let rootDir = "/Users/tanishka/performance/my-app/fileserve"
+let rootDir = "/Users/Shared/workspace/inventory-core/build/reports/gatling"
 app.use('/listRootDir', (req, res) => {
     var files = fs.readdirSync(rootDir);
     var resultArray = [];
@@ -20,7 +20,10 @@ app.use('/listRootDir', (req, res) => {
 });
 
 app.use(express.static('.'))
-app.use('/getIndex/:indexDir', (req, res) => {
+
+app.use('/getIndex', express.static(rootDir))
+
+app.use('/getIndex/:indexDir/fetchFilesForDisplay', (req, res) => {
 
     res.sendFile(rootDir+ '/'+req.params.indexDir + '/index.html');
 });
